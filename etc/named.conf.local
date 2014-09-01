@@ -1,0 +1,16 @@
+acl "xfer" {
+        none;
+};
+
+/*
+ * You might put in here some ips which are allowed to use the cache or
+ * recursive queries
+ */
+acl "trusted" {
+        127.0.0.0/8;
+        ::1/128;
+	/* place your secondary NS here */
+        217.70.177.40; /* ns6.gandi.net */
+};
+
+include "/etc/bind/realconf/named.conf.zones";

@@ -1,0 +1,7 @@
+zone "mydomain.org" IN {
+        type master;
+        file "master/mydomain.org";
+        allow-update { none; };
+        allow-query { any; };
+        allow-transfer { trusted; };
+};
