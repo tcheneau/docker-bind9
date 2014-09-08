@@ -17,8 +17,10 @@ Add files/etc_bind_db.root /etc/bind/db.root
 # Probably doesn't work
 Add files/etc_resolv.conf /etc/resolv.conf
 
-Run mkdir -p /var/run/named
-Volume [ "/etc/bind/realconf", "/var/bind" ]
+Run mkdir -p /var/cache/bind/dynamic
+Run chown -R bind:bind /var/cache/bind
+Run chown -R bind:bind /etc/bind
+Volume [ "/etc/bind/realconf", "/var/cache/bind/zones" ]
 Expose 53/tcp
 Expose 53/udp
 Cmd [ "/usr/sbin/named", "-g", "-4" ]
