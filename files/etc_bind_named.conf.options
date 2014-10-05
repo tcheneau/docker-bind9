@@ -1,33 +1,36 @@
 options {
 	directory "/var/cache/bind";
 
-        allow-query {
-                /*
-                 * Accept queries from our "trusted" ACL.  We will
-                 * allow anyone to query our master zones below.
-                 * This prevents us from becoming a free DNS server
-                 */
-                trusted;
-        };
+	version none; /* hide bind version */
+	hostname none;
 
-        allow-query-cache {
-                /* Use the cache for the "trusted" ACL. */
-                trusted;
-        };
-
-        allow-recursion {
-                /* Only trusted addresses are allowed to use recursion. */
-                trusted;
-        };
-
-        allow-transfer {
-                /* Zone tranfers are denied by default. */
-                none;
-        };
-        allow-update {
-                /* Don't allow updates, e.g. via nsupdate. */
-                none;
-        };
+	allow-query {
+		/*
+		 * Accept queries from our "trusted" ACL.  We will
+		 * allow anyone to query our master zones below.
+		 * This prevents us from becoming a free DNS server
+		 */
+		trusted;
+	};
+	
+	allow-query-cache {
+		/* Use the cache for the "trusted" ACL. */
+		trusted;
+	};
+	
+	allow-recursion {
+		/* Only trusted addresses are allowed to use recursion. */
+		trusted;
+	};
+	
+	allow-transfer {
+		/* Zone tranfers are denied by default. */
+		none;
+	};
+	allow-update {
+		/* Don't allow updates, e.g. via nsupdate. */
+		none;
+	};
 
 	// If there is a firewall between you and nameservers you want
 	// to talk to, you may need to fix the firewall to allow multiple
