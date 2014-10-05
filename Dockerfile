@@ -18,9 +18,11 @@ Add files/etc_bind_db.root /etc/bind/db.root
 Add files/etc_resolv.conf /etc/resolv.conf
 
 Run mkdir -p /var/cache/bind/dynamic
+Run mkdir -p /var/run/named
 Run chown -R bind:bind /var/cache/bind
 Run chown -R bind:bind /etc/bind
+Run chown -R bind:bind /var/run/named
 Volume [ "/etc/bind/realconf", "/var/cache/bind/zones" ]
 Expose 53/tcp
 Expose 53/udp
-Cmd [ "/usr/sbin/named", "-g", "-4" ]
+Cmd [ "/usr/sbin/named", "-u", "bind", "-f", "-4" ]

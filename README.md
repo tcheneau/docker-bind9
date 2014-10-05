@@ -20,6 +20,8 @@ Configuring
 Edit the configuration files in the etc directory to match your zones.
 Add your zones in the zones directory.
 
+Your files (and directories that contains them) should be readable to the bind user (UID 101) when the program is run with the chroot argument (default behavior using the Dockerfile).
+
 Running
 -------
 
